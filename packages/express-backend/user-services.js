@@ -11,16 +11,17 @@ mongoose
   .catch((error) => console.log(error));
 
 function getUsers(name, job) {
-  let promise;
-  if (name === undefined && job === undefined) {
-    promise = userModel.find();
-  } else if (name && !job) {
-    promise = findUserByName(name);
-  } else if (job && !name) {
-    promise = findUserByJob(job);
+  let search = {};
+  if (name !== undefined) {
+    search.name = name;
   }
-  return promise;
+  if (job !== undefined) {
+    search.job = job;
+  }
+
+  return userModel.find(search);
 }
+
 
 function findUserById(id) {
   return userModel.findById(id);
