@@ -5,12 +5,12 @@ import Form from "./Form";
 
 function MyApp() {
   const [characters, setCharacters] = useState([]);
-  function removeOneCharacter(index) {
-    const userId = characters[index].id;
+  function removeOneCharacter(userId) {
     delUser(userId)
       .then((response) => {
         if (response.ok) {
-          const updated = characters.filter((character, i) => i !== index);
+          // Delete was successful on the backend, now update the frontend state
+          const updated = characters.filter((character) => character._id !== userId);
           setCharacters(updated);
         } else {
           // Handle errors or unsuccessful deletion attempts (e.g., user not found)
@@ -22,7 +22,7 @@ function MyApp() {
         // Network or other error
         console.error("Error deleting user:", error);
       });
-  }
+}
   function updateList(person) {
     postUser(person)
       .then((response) => {

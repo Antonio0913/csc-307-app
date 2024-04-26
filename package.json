@@ -8,10 +8,15 @@
     "dev": "cd packages/react-frontend && vite"
   },
   "author": "",
-  "license": "ISC"
-  ,
+  "license": "ISC",
   "workspaces": [
     "packages/*"
-  ]
+  ],
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "mongoose": "^8.3.2"
+  }
 }
-
